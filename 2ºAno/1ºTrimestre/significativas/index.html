@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: aquamarine;
+        }
+
+        img {
+            width: 20%;
+            height: 30%;
+        }
+
+        .geral {
+
+            text-align: center;
+        }
+
+        .radios {
+            text-align: justify;
+            margin-left: 42%;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="geral">
+        <h1>Minha primeira página, h1</h1>
+        <h2>Minha primeira página, h2</h2>
+        <h3>Minha primeira página, h3</h3>
+        <h4>Minha primeira página, h4</h4>
+        <h5>Minha primeira página, h5</h5>
+        <h6>Minha primeira página, h6</h6>
+        <p>Com a tag < p> podemos fazer parágrafos!</p>
+        <a href="https://www.youtube.com/watch?v=cfiHHImr6qA">Com a tag < a> podemos criar links</a><br>
+        <img src="https://pbs.twimg.com/media/FH63ZT3XMAMBfF2.jpg" alt="Shrek albino">Com a tag < img> podemos colocar
+            imagens</img><br><br>
+            <button onclick="media()" type="button" class="btn btn-outline-success btn-lg" style="width: 300px;">Cálculo
+                da média</button><br>
+            <button onclick="dia17()" type="button" class="btn btn-outline-info btn-lg" style="width: 300px;">Dia
+                17</button><br><br>
+            <h3>Conversor de Temperatura</h3>
+            <input id="temp" type="number" placeholder="Digite a temperatura"><br>
+            <div class="radios">
+                <input id="cf" name="tipo" type="radio">Celsius para Fahrenheit</input><br>
+                <input id="ck" name="tipo" type="radio">Celsius para Kelvin</input><br>
+                <input id="fc" name="tipo" type="radio">Fahrenheit para Celsius</input><br>
+                <input id="fk" name="tipo" type="radio">Fahrenheit para Kelvin</input><br>
+                <input id="kc" name="tipo" type="radio">Kelvin para Celsius</input><br>
+                <input id="kf" name="tipo" type="radio">Kelvin para Fahrenheit</input><br>
+            </div>
+            <button onclick="converte()" type="button" class="btn btn-outline-primary btn-lg" style="width: 300px;">Converter</button><br>
+            <p id="result">Resultado</p>
+    </div>
+</body>
+</html>
+<script>
+    function media() {
+        var n = prompt("Digite a quantidade de valores para calcular a média!")
+        var resultado, soma = 0
+        for (var i = 1; i <= n; i++) {
+            soma += Number(prompt("Digite o " + i + "º número!"))
+        }
+        resultado = soma / n
+        alert("A média é " + resultado)
+    }
+    function dia17() {
+        var nome = prompt("Digite seu nome!")
+        var anoAtual = prompt("Digite o ano atual!")
+        var anoNasc = prompt("Digite o ano que você nasceu!")
+        var idade = anoAtual - anoNasc
+        if (idade >= 18) {
+            alert("Bem vindo, " + nome + "!\nEm " + anoAtual + " você completa " + idade + " anos!\nPortanto maior de idade!")
+        }
+        else {
+            alert("Bem vindo, " + nome + "!\n em " + anoAtual + " você completa " + idade + " anos!\nPortanto menor de idade!")
+        }
+    }
+    function converte(){
+        var temperatura = Number(document.getElementById("temp").value)
+        var r = 0
+        if(document.getElementById("cf").checked){
+            r = temperatura * (9/5) + 32
+        }
+        else if(document.getElementById("ck").checked){
+            r = temperatura + 273.15
+        }
+        else if(document.getElementById("fc").checked){
+            r = (temperatura - 32 )*(5/9)  
+        }
+        else if(document.getElementById("fk").checked){
+            r = (temperatura - 32) * 5/9 + 273,15 
+        } 
+           else if(document.getElementById("kc").checked){
+            r = (temperatura - 273)
+        }
+        else if(document.getElementById("kf").checked){
+            r = (temperatura - 273) * 9/5 + 32
+        }
+        document.getElementById("result").innerHTML = r
+    }
+</script>
